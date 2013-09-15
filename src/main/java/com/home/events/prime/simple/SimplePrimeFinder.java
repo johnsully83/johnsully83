@@ -31,10 +31,10 @@ public class SimplePrimeFinder implements PrimeFinder {
 		log.info("Beginning prime finding...");
 		MongoPrime prime;
 		
-		List<MongoPrime> primeResults = primeMongoDao.query(null, new Sort(Sort.Direction.DESC, "pk"), 1);
+		List<MongoPrime> primeResults = primeMongoDao.query(null, new Sort(Sort.Direction.DESC, "_id"), 1);
 		
 		if(primeResults.isEmpty()) {
-			prime = new MongoPrime(BigInteger.valueOf(2));
+			prime = new MongoPrime(1, BigInteger.valueOf(2));
 			
 			primeMongoDao.merge(prime);
 		} else {
@@ -68,7 +68,7 @@ public class SimplePrimeFinder implements PrimeFinder {
 			largestCurrentPrime = largestCurrentPrime.add(BigInteger.valueOf(2));
 		}
 		
-		return new MongoPrime(largestCurrentPrime);
+		return new MongoPrime(prime.getId()+1, largestCurrentPrime);
 	}
 
 	private boolean isNotPrime(BigInteger value) {

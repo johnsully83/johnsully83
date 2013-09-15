@@ -52,14 +52,14 @@
 				<p>
 					I use MongoDB in order to store and retrieve the values to make the process as fast as possible.
 					Thus the load time for the tables below is relatively low, and you should be able to constantly
-					see new numbers appearing in the first (Most Recent 1000) table.
+					see new numbers appearing in the first (Most Recent 10000) table.
 				</p>
 			</div>
 		</div>
 		<div class="info">
 			<div class="primeSection">
 				<div class="title">
-					Most Recent 1000 Prime Numbers
+					Most Recent 10000 Prime Numbers
 				</div>
 				<div class="datatable">
 					<div id="containerEH">
@@ -84,7 +84,7 @@
 			</div>
 			<div class="primeSection">
 				<div class="title">
-					Find a Range of Primes (Max 1000)
+					Find a Range of Primes (Max 10000)
 				</div>
 				<div class="primeForm">
 					<div class="primeInputWrapper">

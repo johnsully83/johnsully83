@@ -11,9 +11,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.stereotype.Service;
 
+import com.home.AppSettings;
 import com.home.email.MailService;
 import com.home.email.domain.MailInfo;
-import com.home.model.hardcodedvalues.GeneralHardCodedValues;
 import com.home.service.email.EmailService;
 import com.home.utility.Utility;
 
@@ -23,21 +23,21 @@ public class SimpleEmailService implements EmailService {
 	
 	private final MailService mailService;
 	private final MessageSource messageSource;
-	private final GeneralHardCodedValues generalHardCodedValues;
+	private final AppSettings appSettings;
 	
 	@Autowired
-	public SimpleEmailService(MailService mailService, MessageSource messageSource, GeneralHardCodedValues generalHardCodedValues) {
+	public SimpleEmailService(MailService mailService, MessageSource messageSource, AppSettings appSettings) {
 		super();
 		this.mailService=mailService;
 		this.messageSource=messageSource;
-		this.generalHardCodedValues=generalHardCodedValues;
+		this.appSettings=appSettings;
 	}
 
 	@Override
 	public void sendThankyouEmail(String emailAddress, String name) {
 		MailInfo mailInfo = new MailInfo();
 		
-		mailInfo.setSender(generalHardCodedValues.getEmailSender());
+		mailInfo.setSender(appSettings.getEmailSender());
 		mailInfo.setTo(Collections.singletonList(emailAddress));
 		
 		String [] valuesToInject = {name};

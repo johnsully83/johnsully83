@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.NaturalId;
 
 import com.home.model.cloud.CloudTable;
-import com.home.model.openexchange.OpenExchangeLatestRates;
+import com.home.model.json.OpenExchangeLatestRates;
 
 @Entity(name="LatestRates")
 @Embeddable

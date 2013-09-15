@@ -5,8 +5,8 @@ import java.io.Serializable;
 
 public interface MongoCloudTable<PK extends Comparable<PK>> extends Serializable {
 
-	public String getId();
+	public Integer getId();
 	
-	public void setId(String id);
+	public void setId(Integer id);
 	
 }

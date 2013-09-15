@@ -11,7 +11,7 @@ public class MongoCountry implements MongoCloudTable<Integer> {
 	private static final long serialVersionUID = 2805152574282976239L;
 
 	@Id
-	private String id;
+	private Integer id;
 
 	@Indexed(unique=true)
 	private String name;
@@ -22,12 +22,12 @@ public class MongoCountry implements MongoCloudTable<Integer> {
 	}
 
 	@Override
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -47,6 +47,44 @@ public class MongoCountry implements MongoCloudTable<Integer> {
 		this.hasStates = hasStates;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((hasStates == null) ? 0 : hasStates.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MongoCountry other = (MongoCountry) obj;
+		if (hasStates == null) {
+			if (other.hasStates != null)
+				return false;
+		} else if (!hasStates.equals(other.hasStates))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

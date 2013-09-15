@@ -14,8 +14,7 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 	private static final long serialVersionUID = 8296104894507238797L;
 	
 	@Id
-	private String id;
-	private Integer pk;
+	private Integer id;
 
 	@Indexed(unique=false)
 	private String currencyCode;
@@ -27,11 +26,10 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 		super();
 	}
 	
-	public MongoCurrency(String id, Integer pk, String currencyCode,
+	public MongoCurrency(Integer id, String currencyCode,
 			BigDecimal value, Integer timestamp) {
 		super();
 		this.id = id;
-		this.pk = pk;
 		this.currencyCode = currencyCode;
 		this.value = value;
 		this.timestamp = timestamp;
@@ -39,20 +37,19 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 
 	public MongoCurrency(CurrencyValue currencyValue) {
 		super();
-		this.id=currencyValue.getPk().toString();
-		this.pk=currencyValue.getPk();
+		this.id=currencyValue.getPk();
 		this.currencyCode=currencyValue.getCurrency().getCurrencyCode();
 		this.value=currencyValue.getValue();
 		this.timestamp=currencyValue.getLatestRates().getTimestamp();
 	}
 
 	@Override
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -82,7 +79,7 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 
 	@Override
 	public String toString() {
-		return "MongoCurrency [id=" + id + ", pk=" + pk + ", currencyCode="
+		return "MongoCurrency [id=" + id + ", currencyCode="
 				+ currencyCode + ", value=" + value + ", timestamp="
 				+ timestamp + "]";
 	}
@@ -94,7 +91,6 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 		result = prime * result
 				+ ((currencyCode == null) ? 0 : currencyCode.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((pk == null) ? 0 : pk.hashCode());
 		result = prime * result
 				+ ((timestamp == null) ? 0 : timestamp.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
@@ -119,11 +115,6 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (pk == null) {
-			if (other.pk != null)
-				return false;
-		} else if (!pk.equals(other.pk))
 			return false;
 		if (timestamp == null) {
 			if (other.timestamp != null)

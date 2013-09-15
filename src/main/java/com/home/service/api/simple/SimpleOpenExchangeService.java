@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.home.model.config.OpenExchangeConfig;
-import com.home.model.openexchange.OpenExchangeLatestRates;
+import com.home.model.json.OpenExchangeLatestRates;
 import com.home.service.api.OpenExchangeService;
 
 @Service("openExchangeService")

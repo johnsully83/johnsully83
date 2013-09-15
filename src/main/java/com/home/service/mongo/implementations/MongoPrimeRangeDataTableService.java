@@ -23,7 +23,6 @@ import com.home.model.datatable.structure.simple.SimpleColumn;
 import com.home.model.datatable.structure.simple.SimpleColumnConfiguration;
 import com.home.model.datatable.view.MongoPrimeView;
 import com.home.service.mongo.AbstractMongoDataTableService;
-import com.home.utility.Utility;
 
 @Service("mongoPrimeRangeDataTableService")
 public class MongoPrimeRangeDataTableService extends
@@ -41,7 +40,7 @@ public class MongoPrimeRangeDataTableService extends
 		for(MongoPrime prime : records) {
 			MongoPrimeView view = new MongoPrimeView();
 			
-			view.setCardinality(Utility.forceParseInteger(prime.getId()));
+			view.setCardinality(prime.getId());
 			view.setValue(prime.getPrime().toString());
 			
 			views.add(view);
@@ -66,13 +65,13 @@ public class MongoPrimeRangeDataTableService extends
 	protected List<MongoPrime> query(JQueryDataTableParameter parameters) {
 		if(parameters.getFromPrime() == null || parameters.getToPrime() == null
 				|| parameters.getToPrime() <= 0) {
-			Query query = new Query().limit(1000).with(new Sort(Direction.DESC, "pk"));
+			Query query = new Query().limit(1000).with(new Sort(Direction.DESC, "_id"));
 			
 			return getMongoDao().query(query);
 		} else {
 			Query query = Query.query(
-					where("pk").gte(parameters.getFromPrime()).lte(parameters.getToPrime()))
-				.limit(1000).with(new Sort(Direction.DESC, "id"));
+					where("id").gte(parameters.getFromPrime()).lte(parameters.getToPrime()))
+				.with(new Sort(Direction.DESC, "_id")).limit(10000);
 
 			return getMongoDao().query(query);
 		}

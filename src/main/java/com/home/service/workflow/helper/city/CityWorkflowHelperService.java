@@ -170,15 +170,15 @@ public class CityWorkflowHelperService extends AbstractWorkflowHelperService<Cit
 			MongoCity mongoCity= new MongoCity();
 
 			mongoCity.setName(city.getName());
-			mongoCity.setId(city.getPk().toString());
+			mongoCity.setId(city.getPk());
 
-			MongoState state = stateMongoDao.findByID(city.getState().getPk().toString());
-			MongoCountry country = countryMongoDao.findByID(city.getCountry().getPk().toString());
+			MongoState state = stateMongoDao.findByID(city.getState().getPk());
+			MongoCountry country = countryMongoDao.findByID(city.getCountry().getPk());
 
 			mongoCity.setState(state);
 			mongoCity.setCountry(country);
 
-			mongoCity.setId(city.getPk().toString());
+			mongoCity.setId(city.getPk());
 
 			cityMongoDao.merge(mongoCity);
 		}

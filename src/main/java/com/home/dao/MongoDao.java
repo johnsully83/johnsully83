@@ -16,7 +16,7 @@ public interface MongoDao<T extends MongoCloudTable<PK>, PK extends Comparable<P
 	
 	public void remove(T record);
 	
-	public T findByID(String id);
+	public T findByID(PK id);
 	
 	public T find(PK key);
 

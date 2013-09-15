@@ -70,9 +70,9 @@ public class CountryWorkflowHelperService extends AbstractWorkflowHelperService<
 			
 			mongoCountry.setHasStates(country.getHasStates());
 			mongoCountry.setName(country.getName());
-			mongoCountry.setId(country.getPk().toString());
+			mongoCountry.setId(country.getPk());
 			
-			mongoCountry.setId(country.getPk().toString());
+			mongoCountry.setId(country.getPk());
 			
 			countryMongoDao.merge(mongoCountry);
 		}

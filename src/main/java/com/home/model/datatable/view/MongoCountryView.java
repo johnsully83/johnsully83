@@ -2,7 +2,6 @@ package com.home.model.datatable.view;
 
 import com.home.model.cloud.mongo.MongoCountry;
 import com.home.model.enumeration.main.YesNo;
-import com.home.utility.Utility;
 
 public class MongoCountryView {
 	private Integer countryID;
@@ -11,7 +10,7 @@ public class MongoCountryView {
 	
 	public MongoCountryView(MongoCountry mongoCountry) {
 		super();
-		this.countryID=Utility.forceParseInteger(mongoCountry.getId());
+		this.countryID=mongoCountry.getId();
 		this.name=mongoCountry.getName();
 		this.hasStates=mongoCountry.getHasStates() ? YesNo.YES.value() : YesNo.NO.value();
 	}

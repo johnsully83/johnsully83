@@ -15,7 +15,7 @@ public class MongoPrime implements MongoCloudTable<Integer> {
 	
 	@Id
 	@Indexed
-	private String id;
+	private Integer id;
 
 	private BigInteger prime;
 	
@@ -23,7 +23,7 @@ public class MongoPrime implements MongoCloudTable<Integer> {
 		super();
 	}
 
-	public MongoPrime(String id, BigInteger prime) {
+	public MongoPrime(Integer id, BigInteger prime) {
 		super();
 		this.id = id;
 		this.prime = prime;
@@ -31,7 +31,7 @@ public class MongoPrime implements MongoCloudTable<Integer> {
 
 	public MongoPrime(Prime prime) {
 		super();
-		this.id=prime.getPk().toString();
+		this.id=prime.getPk();
 		this.prime=prime.getPrime();
 	}
 
@@ -42,12 +42,12 @@ public class MongoPrime implements MongoCloudTable<Integer> {
 	}
 
 	@Override
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -21,7 +21,6 @@ import com.home.model.datatable.structure.simple.SimpleColumn;
 import com.home.model.datatable.structure.simple.SimpleColumnConfiguration;
 import com.home.model.datatable.view.MongoPrimeView;
 import com.home.service.mongo.AbstractMongoDataTableService;
-import com.home.utility.Utility;
 
 @Service("mongoPrimeDataTableService")
 public class MongoPrimeDataTableService extends AbstractMongoDataTableService<MongoPrime, Integer, MongoPrimeView> {
@@ -38,7 +37,7 @@ public class MongoPrimeDataTableService extends AbstractMongoDataTableService<Mo
 		for(MongoPrime prime : records) {
 			MongoPrimeView view = new MongoPrimeView();
 			
-			view.setCardinality(Utility.forceParseInteger(prime.getId()));
+			view.setCardinality(prime.getId());
 			view.setValue(prime.getPrime().toString());
 			
 			views.add(view);
@@ -61,7 +60,7 @@ public class MongoPrimeDataTableService extends AbstractMongoDataTableService<Mo
 
 	@Override
 	protected List<MongoPrime> query(JQueryDataTableParameter parameters) {
-		Query query = new Query().limit(1000).with(new Sort(Direction.DESC, "pk"));
+		Query query = new Query().with(new Sort(Direction.DESC, "_id")).limit(10000);
 		
 		return getMongoDao().query(query);
 	}

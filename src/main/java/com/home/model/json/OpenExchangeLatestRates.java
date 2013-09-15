@@ -1,4 +1,4 @@
-package com.home.model.openexchange;
+package com.home.model.json;
 
 import java.util.LinkedHashMap;
 

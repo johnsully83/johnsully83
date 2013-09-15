@@ -15,7 +15,7 @@ import com.home.model.cloud.jpa.Currency;
 import com.home.model.cloud.jpa.CurrencyValue;
 import com.home.model.cloud.jpa.LatestRates;
 import com.home.model.cloud.mongo.MongoCurrency;
-import com.home.model.openexchange.OpenExchangeLatestRates;
+import com.home.model.json.OpenExchangeLatestRates;
 import com.home.service.api.OpenExchangeService;
 import com.home.service.model.DtoService;
 import com.home.service.workflow.helper.AbstractWorkflowHelperService;

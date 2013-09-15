@@ -50,7 +50,7 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	}
 
 	@Override
-	public T findByID(String id) {
+	public T findByID(PK id) {
 		checkCollectionExists();
 		
 		return mongoOperations.findById(id, entityClass);

@@ -12,7 +12,7 @@ public class MongoState implements MongoCloudTable<Integer> {
 	private static final long serialVersionUID = 2407198280897293888L;
 
 	@Id
-	private String id;
+	private Integer id;
 
 	@Indexed(unique=true)
 	private String name;
@@ -25,12 +25,12 @@ public class MongoState implements MongoCloudTable<Integer> {
 	}
 
 	@Override
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
