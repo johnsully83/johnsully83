@@ -56,7 +56,7 @@ public class MongoStateDataTableService extends AbstractMongoDataTableService<Mo
 
 	@Override
 	protected List<MongoState> query(JQueryDataTableParameter parameters) {
-		Criteria whereCountry = Criteria.where("country.$id").is(parameters.getCountryID().toString());
+		Criteria whereCountry = Criteria.where("country.$id").is(parameters.getCountryID());
 		
 		return getMongoDao().query(whereCountry);
 	}

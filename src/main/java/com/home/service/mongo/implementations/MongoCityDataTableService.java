@@ -56,7 +56,7 @@ public class MongoCityDataTableService extends AbstractMongoDataTableService<Mon
 
 	@Override
 	protected List<MongoCity> query(JQueryDataTableParameter parameters) {
-		Criteria whereState = Criteria.where("state.$id").is(parameters.getStateID().toString());
+		Criteria whereState = Criteria.where("state.$id").is(parameters.getStateID());
 		
 		return getMongoDao().query(whereState);
 	}
