@@ -8,8 +8,11 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-                     classpath:applicationContext.xml
-        </param-value>
+					classpath:applicationContext.xml	
+					classpath*:*-workflow.xml	
+					classpath*:*-config.xml
+					classpath*:*-scheduledtasks.xml
+		</param-value>
 	</context-param>
 	<!-- ******************** FILTERS ******************** -->
 	<listener>
