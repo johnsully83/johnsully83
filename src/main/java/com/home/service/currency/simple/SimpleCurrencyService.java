@@ -82,7 +82,6 @@ public class SimpleCurrencyService implements CurrencyService {
 		MongoCurrency fromCurrency = fromCurrencies.get(0);
 		MongoCurrency toCurrency = toCurrencies.get(0);
 		
-		
 		BigDecimal fromCurrencyInUsd = BigDecimal.ONE.divide(fromCurrency.getValue(), 10, BigDecimal.ROUND_HALF_UP)
 				.multiply(currencyForm.getAmountFrom());
 		
