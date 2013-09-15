@@ -37,7 +37,7 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 		
 		mongoOperations.save(record);
 		
-		List<T> results = mongoOperations.find(new Query(Criteria.where("id").is(record.getId())), entityClass);
+		List<T> results = mongoOperations.find(new Query(Criteria.where("_id").is(record.getId())), entityClass);
 		
 		return results.get(0);
 	}
@@ -60,7 +60,7 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	public T find(PK key) {
 		checkCollectionExists();
 		
-		return mongoOperations.findOne(new Query(Criteria.where("id").is(key)), entityClass);
+		return mongoOperations.findOne(new Query(Criteria.where("_id").is(key)), entityClass);
 	}
 
 	@Override

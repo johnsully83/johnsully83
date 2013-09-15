@@ -12,6 +12,7 @@ public class MongoCity implements MongoCloudTable<Integer> {
 	private static final long serialVersionUID = 2791988850037856989L;
 
 	@Id
+	@Indexed(unique=true)
 	private Integer id;
 
 	@Indexed(unique=true)
