@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -36,18 +37,9 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 		
 		mongoOperations.save(record);
 		
-		List<T> results = mongoOperations.find(new Query(Criteria.where("pk").is(record.getPk())), entityClass);
+		List<T> results = mongoOperations.find(new Query(Criteria.where("pk").is(record.getId())), entityClass);
 		
 		return results.get(0);
-	}
-	
-	@Override
-	public void delete(T record) {
-		checkCollectionExists();
-		
-		record.setIsDeleted(true);
-		
-		merge(record);
 	}
 
 	@Override
@@ -82,7 +74,41 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	public List<T> query(Criteria criteria) {
 		checkCollectionExists();
 		
+		if(criteria == null) {
+			criteria = new Criteria();
+		}
+		
 		return mongoOperations.find(new Query(criteria), entityClass);
+	}
+	
+	@Override
+	public List<T> query(Criteria criteria, Sort sort) {
+		checkCollectionExists();
+		
+		if(criteria == null) {
+			criteria = new Criteria();
+		}
+		
+		if(sort == null) {
+			sort = new Sort("pk");
+		}
+		
+		return mongoOperations.find(new Query(criteria).with(sort), entityClass);
+	}
+	
+	@Override
+	public List<T> query(Criteria criteria, Sort sort, Integer limit) {
+		checkCollectionExists();
+		
+		if(criteria == null) {
+			criteria = new Criteria();
+		}
+		
+		if(sort == null) {
+			sort = new Sort("pk");
+		}
+		
+		return mongoOperations.find(new Query(criteria).with(sort).limit(limit), entityClass);
 	}
 
 	@Override

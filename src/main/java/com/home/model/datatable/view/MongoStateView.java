@@ -1,6 +1,7 @@
 package com.home.model.datatable.view;
 
 import com.home.model.cloud.mongo.MongoState;
+import com.home.utility.Utility;
 
 public class MongoStateView {
 	private Integer stateID;
@@ -9,7 +10,7 @@ public class MongoStateView {
 	
 	public MongoStateView(MongoState mongoState) {
 		super();
-		this.stateID=mongoState.getPk();
+		this.stateID=Utility.forceParseInteger(mongoState.getId());
 		this.countryName=mongoState.getCountry().getName();
 		this.name=mongoState.getName();
 	}

@@ -23,6 +23,7 @@ import com.home.model.datatable.structure.simple.SimpleColumn;
 import com.home.model.datatable.structure.simple.SimpleColumnConfiguration;
 import com.home.model.datatable.view.MongoPrimeView;
 import com.home.service.mongo.AbstractMongoDataTableService;
+import com.home.utility.Utility;
 
 @Service("mongoPrimeRangeDataTableService")
 public class MongoPrimeRangeDataTableService extends
@@ -40,7 +41,7 @@ public class MongoPrimeRangeDataTableService extends
 		for(MongoPrime prime : records) {
 			MongoPrimeView view = new MongoPrimeView();
 			
-			view.setCardinality(prime.getPk());
+			view.setCardinality(Utility.forceParseInteger(prime.getId()));
 			view.setValue(prime.getPrime().toString());
 			
 			views.add(view);

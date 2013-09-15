@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">	
+<!DOCTYPE html>	
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,12 +15,6 @@
 <script type="text/javascript" src="/javascript/library/jqueryui/jquery-ui.custom.min.js"></script>
 <script type="text/javascript" src="/javascript/custom/core.js"></script>
 <script type="text/javascript" src="/javascript/custom/guestbook.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('#country').val("${unitedStatesCountryID}")
-		$('#state').val("${massachusettsStateID}")
-	});
-</script>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,20 +51,33 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-						</td>
+						<td />
 						<td>
 							<form:errors path="username" cssClass="error" />
 						</td>
 					</tr>
+					<tr>
+						<td class="labelWrapper">
+							<div class="label orange">
+								<form:label path="password">
+									Password:
+								</form:label>
+							</div>
+						</td>
+						<td>
+							<div class="cellWrapper">
+								<form:input path="password" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td />
+						<td>
+							<form:errors path="password" cssClass="error" />
+						</td>
+					</tr>
 				</tbody>
-			<form:input path="password">
-			
-			</form:input>
-			<form:input path="username">
-			
-			</form:input>
-			<form
+			</table>
 		</form:form>
 	</div>
 	<jsp:include page="../../tags/navigation.jsp" />

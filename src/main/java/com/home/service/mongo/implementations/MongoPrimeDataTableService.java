@@ -21,6 +21,7 @@ import com.home.model.datatable.structure.simple.SimpleColumn;
 import com.home.model.datatable.structure.simple.SimpleColumnConfiguration;
 import com.home.model.datatable.view.MongoPrimeView;
 import com.home.service.mongo.AbstractMongoDataTableService;
+import com.home.utility.Utility;
 
 @Service("mongoPrimeDataTableService")
 public class MongoPrimeDataTableService extends AbstractMongoDataTableService<MongoPrime, Integer, MongoPrimeView> {
@@ -37,7 +38,7 @@ public class MongoPrimeDataTableService extends AbstractMongoDataTableService<Mo
 		for(MongoPrime prime : records) {
 			MongoPrimeView view = new MongoPrimeView();
 			
-			view.setCardinality(prime.getPk());
+			view.setCardinality(Utility.forceParseInteger(prime.getId()));
 			view.setValue(prime.getPrime().toString());
 			
 			views.add(view);

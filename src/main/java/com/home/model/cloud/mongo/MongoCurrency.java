@@ -1,7 +1,6 @@
 package com.home.model.cloud.mongo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -17,9 +16,6 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 	@Id
 	private String id;
 	private Integer pk;
-	private Date dateAdded = new Date();
-	private Date dateLastModified = new Date();
-	private Boolean isDeleted = false;
 
 	@Indexed(unique=false)
 	private String currencyCode;
@@ -31,15 +27,11 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 		super();
 	}
 	
-	public MongoCurrency(String id, Integer pk, Date dateAdded,
-			Date dateLastModified, Boolean isDeleted, String currencyCode,
+	public MongoCurrency(String id, Integer pk, String currencyCode,
 			BigDecimal value, Integer timestamp) {
 		super();
 		this.id = id;
 		this.pk = pk;
-		this.dateAdded = dateAdded;
-		this.dateLastModified = dateLastModified;
-		this.isDeleted = isDeleted;
 		this.currencyCode = currencyCode;
 		this.value = value;
 		this.timestamp = timestamp;
@@ -62,46 +54,6 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 	@Override
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	@Override
-	public Integer getPk() {
-		return pk;
-	}
-
-	@Override
-	public void setPk(Integer pk) {
-		this.pk = pk;
-	}
-
-	@Override
-	public Date getDateAdded() {
-		return dateAdded;
-	}
-
-	@Override
-	public void setDateAdded(Date dateAdded) {
-		this.dateAdded = dateAdded;
-	}
-
-	@Override
-	public Date getDateLastModified() {
-		return dateLastModified;
-	}
-
-	@Override
-	public void setDateLastModified(Date dateLastModified) {
-		this.dateLastModified = dateLastModified;
-	}
-
-	@Override
-	public Boolean getIsDeleted() {
-		return isDeleted;
-	}
-
-	@Override
-	public void setIsDeleted(Boolean isDeleted) {
-		this.isDeleted = isDeleted;
 	}
 
 	public String getCurrencyCode() {
@@ -130,10 +82,9 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 
 	@Override
 	public String toString() {
-		return "MongoCurrency [id=" + id + ", pk=" + pk + ", dateAdded="
-				+ dateAdded + ", dateLastModified=" + dateLastModified
-				+ ", isDeleted=" + isDeleted + ", currencyCode=" + currencyCode
-				+ ", value=" + value + ", timestamp=" + timestamp + "]";
+		return "MongoCurrency [id=" + id + ", pk=" + pk + ", currencyCode="
+				+ currencyCode + ", value=" + value + ", timestamp="
+				+ timestamp + "]";
 	}
 
 	@Override
@@ -142,14 +93,7 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 		int result = 1;
 		result = prime * result
 				+ ((currencyCode == null) ? 0 : currencyCode.hashCode());
-		result = prime * result
-				+ ((dateAdded == null) ? 0 : dateAdded.hashCode());
-		result = prime
-				* result
-				+ ((dateLastModified == null) ? 0 : dateLastModified.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((isDeleted == null) ? 0 : isDeleted.hashCode());
 		result = prime * result + ((pk == null) ? 0 : pk.hashCode());
 		result = prime * result
 				+ ((timestamp == null) ? 0 : timestamp.hashCode());
@@ -171,25 +115,10 @@ public class MongoCurrency implements MongoCloudTable<Integer> {
 				return false;
 		} else if (!currencyCode.equals(other.currencyCode))
 			return false;
-		if (dateAdded == null) {
-			if (other.dateAdded != null)
-				return false;
-		} else if (!dateAdded.equals(other.dateAdded))
-			return false;
-		if (dateLastModified == null) {
-			if (other.dateLastModified != null)
-				return false;
-		} else if (!dateLastModified.equals(other.dateLastModified))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (isDeleted == null) {
-			if (other.isDeleted != null)
-				return false;
-		} else if (!isDeleted.equals(other.isDeleted))
 			return false;
 		if (pk == null) {
 			if (other.pk != null)

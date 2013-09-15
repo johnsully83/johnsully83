@@ -120,7 +120,7 @@ public class StateWorkflowHelperService extends AbstractWorkflowHelperService<St
 			MongoState mongoState = new MongoState();
 			
 			mongoState.setName(state.getName());
-			mongoState.setPk(state.getPk());
+			mongoState.setId(state.getPk().toString());
 			
 			MongoCountry country = countryMongoDao.findByID(state.getCountry().getPk().toString());
 			
