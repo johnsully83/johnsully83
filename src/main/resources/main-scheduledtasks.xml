@@ -11,12 +11,36 @@
 		<property name="overwriteExistingJobs" value="true" />
 		<property name="triggers">
 			<list>
-<!-- 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean"> -->
-<!-- 					<property name="jobDetail" ref="primeReplicationJobDetail" /> -->
-<!-- 					<property name="repeatInterval" value="1892160000000" /> -->
-<!-- 					<property name="repeatCount" value="0" /> -->
-<!-- 					<property name="startDelay" value="5000" /> -->
-<!-- 				</bean> -->
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="primeReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="countryReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="stateReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="120000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="cityReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="600000" />
+				</bean>
 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
 					<property name="cronExpression" value="${countryReplicationCronExpression}" />
 					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
