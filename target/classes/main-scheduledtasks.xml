@@ -27,13 +27,13 @@
 					<property name="jobDetail" ref="stateReplicationJobDetail" />
 					<property name="repeatInterval" value="1892160000000" />
 					<property name="repeatCount" value="0" />
-					<property name="startDelay" value="5000" />
+					<property name="startDelay" value="120000" />
 				</bean>
 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
 					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
 					<property name="repeatInterval" value="1892160000000" />
 					<property name="repeatCount" value="0" />
-					<property name="startDelay" value="5000" />
+					<property name="startDelay" value="600000" />
 				</bean>
 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
 					<property name="jobDetail" ref="cityReplicationJobDetail" />
