@@ -17,6 +17,30 @@
 					<property name="repeatCount" value="0" />
 					<property name="startDelay" value="5000" />
 				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="countryReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="stateReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="cityReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
 					<property name="cronExpression" value="0 0 0 1/1 * ? *" />
 					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
